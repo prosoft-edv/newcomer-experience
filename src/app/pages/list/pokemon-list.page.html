@@ -1,0 +1,12 @@
+<ps-card [caption]="'Pokémon list'" [contentPadding]="'0'">
+  <ps-table [tableId]="'pokemon-list'" [dataSource]="tds" [layout]="'flat'">
+    <ps-table-column [property]="'id'" [header]="'ID'"></ps-table-column>
+    <ps-table-column [property]="'name'" [header]="'Name'" [mandatory]="true"></ps-table-column>
+    <ps-table-column [property]="'_sprite'" [header]="'Sprite'" [sortable]="false">
+      <ng-container *psTableColumnTemplate="let row">
+        <img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + row.id + '.png'"/>
+      </ng-container>
+    </ps-table-column>
+    <ps-table-column [property]="'url'" [header]="'Pokémon-Api-Url'"></ps-table-column>
+  </ps-table>
+</ps-card>

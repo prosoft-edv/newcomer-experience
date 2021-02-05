@@ -8,10 +8,17 @@ import { DefaultPsSelectService, PsSelectService } from '@prosoft/components/sel
 import { PsTableSettingsService } from '@prosoft/components/table';
 
 import { AppComponent } from './app.component';
+import { PokemonListModule } from './pages/list/pokemon-list.module';
+import { PokemonListPage } from './pages/list/pokemon-list.page';
 import { DemoFormService } from './shared/demo-form.service';
 import { DemoTableSettingsService } from './shared/demo-table-settings.service';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: PokemonListPage
+  }
+];
 
 @NgModule({
   declarations: [
@@ -20,6 +27,7 @@ const routes: Routes = [];
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    PokemonListModule,
     RouterModule.forRoot(routes, {
       paramsInheritanceStrategy: 'always',
       relativeLinkResolution: 'corrected',
