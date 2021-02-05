@@ -1,0 +1,9 @@
+.app-pokemon-detail__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em 1em;
+}
+
+.app-pokemon-detail__sprites {
+  grid-column: span 2;
+}

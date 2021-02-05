@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: '',
     component: PokemonListPage
+  },
+  {
+    path: ':nameOrId',
+    loadChildren: () => import('./pages/detail/pokemon-detail.module').then((m) => m.PokemonDetailModule)
   }
 ];
 

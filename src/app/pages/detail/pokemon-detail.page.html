@@ -1,0 +1,29 @@
+<ps-form [dataSource]="fds">
+  <ps-card [caption]="pokemon?.name">
+    <div [formGroup]="fds.form" class="app-pokemon-detail__grid">
+      <app-pokemon-sprite [pokemon]="pokemon" class="app-pokemon-detail__sprites"></app-pokemon-sprite>
+      <ps-form-field>
+        <mat-label>Id</mat-label>
+        <input matInput formControlName="id" />
+      </ps-form-field>
+      <ps-form-field [hint]="'Don\'t you dare use MissingNo!'" [hintToggle]="true">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+      </ps-form-field>
+      <ps-form-field>
+        <mat-label>Height (in meters)</mat-label>
+        <ps-number-input formControlName="height" [decimals]="1" [stepSize]="0.1"></ps-number-input>
+      </ps-form-field>
+      <ps-form-field>
+        <mat-label>Weight (in kilogram)</mat-label>
+        <ps-number-input formControlName="weight" [decimals]="1" [stepSize]="0.1"></ps-number-input>
+      </ps-form-field>
+    </div>
+  </ps-card>
+
+  <ng-container psFormSavebarButtons>
+    <a mat-button type="button" [routerLink]="['/', nextId]">
+      Show random Pokémon
+    </a>
+  </ng-container>
+</ps-form>
