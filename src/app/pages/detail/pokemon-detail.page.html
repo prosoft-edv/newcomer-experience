@@ -18,6 +18,16 @@
         <mat-label>Weight (in kilogram)</mat-label>
         <ps-number-input formControlName="weight" [decimals]="1" [stepSize]="0.1"></ps-number-input>
       </ps-form-field>
+      <!-- Short configuration of ps-select with an inline datasource. Sufficient in most cases. -->
+      <ps-form-field>
+        <mat-label>Types</mat-label>
+        <ps-select formControlName="types" [multiple]="true" [dataSource]="{ mode: 'entity', idKey: 'name', labelKey: 'name', items: types$ }"></ps-select>
+      </ps-form-field>
+      <!-- ps-select with a datasource defined in the .ts file. Provides more configuration options. -->
+      <!-- <ps-form-field>
+        <mat-label>Types</mat-label>
+        <ps-select formControlName="types" [multiple]="true" [dataSource]="typeDS"></ps-select>
+      </ps-form-field> -->
     </div>
   </ps-card>
 
