@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { PsTableDataSource } from '@prosoft/components/table';
 import { map } from 'rxjs/operators';
 
+import { DemoDialogWrapperAction, DemoDialogWrapperDataOut } from '../../shared/demo-dialog-wrapper-data-source';
 import { IListItem } from '../../shared/dtos/list-item';
 import { httpGetPokemonList } from '../../shared/http/http-get-pokemon-list';
+import { ConfirmDeleteDialog, ConfirmDeleteDialogDataIn } from './dialogs/confirm-delete.dialog';
 
 @Component({
   selector: 'app-pokemon-list-page',
@@ -43,5 +46,20 @@ export class PokemonListPage {
     }).pipe(map((result) => result.results))
   );
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private dialog: MatDialog) {}
+
+  public delete(rows: IListItem[]): void {
+    this.dialog
+      .open<
+        ConfirmDeleteDialog,
+        ConfirmDeleteDialogDataIn,
+        DemoDialogWrapperDataOut<void>
+      >(ConfirmDeleteDialog, { data: { ids: rows.map((x) => x.id) } })
+      .afterClosed()
+      .subscribe((result) => {
+        if (result.action === DemoDialogWrapperAction.action) {
+          this.tds.updateData();
+        }
+      });
+  }
 }

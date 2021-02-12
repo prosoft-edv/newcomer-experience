@@ -1,5 +1,17 @@
 <ps-card [caption]="'Pokémon list'" [contentPadding]="'0'">
   <ps-table [tableId]="'pokemon-list'" [dataSource]="tds" [layout]="'flat'">
+    <ng-container *psTableListActions="let selection">
+      <button [disabled]="!selection.length" mat-menu-item (click)="delete(selection)">
+        <mat-icon>delete</mat-icon>
+        Delete
+      </button>
+    </ng-container>
+    <ng-container *psTableRowActions="let row">
+      <button type="button" mat-menu-item (click)="delete([row])">
+        <mat-icon>delete</mat-icon>
+        Delete
+      </button>
+    </ng-container>
     <ps-table-column [property]="'id'" [header]="'ID'">
       <ng-container *psTableColumnTemplate="let row">
         <a [routerLink]="[row.id]">{{ row.id }}</a>
