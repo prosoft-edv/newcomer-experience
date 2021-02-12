@@ -5,6 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:stats": "ng build --prod --source-map --stats-json",
+    "analyze-wba": "webpack-bundle-analyzer ./dist/newcomer-experience/stats.json",
+    "analyze-sme": "source-map-explorer ./dist/newcomer-experience/*.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
